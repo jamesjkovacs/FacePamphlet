@@ -73,14 +73,22 @@ public class FacePamphlet extends ConsoleProgram
 			println("Add: " + currentProfile.toString());
 		}
 		else if (e.getSource() == bDelete){
-			pDatabase.deleteProfile(tName.getText());
-			currentProfile = null;
-			println("Delete: " + tName.getText());
+			if(currentProfile == null)
+				println("Select a profile");
+			else{
+				pDatabase.deleteProfile(tName.getText());
+				currentProfile = null;
+				println("Delete: " + tName.getText());
+			}
 		}
 		else if (e.getSource() == bLookup){
-			pDatabase.getProfile(tName.getText());
-			currentProfile = pDatabase.getProfile(tName.getText());
-			println("Lookup: " + currentProfile.toString());
+			if(currentProfile == null)
+				println("Select a profile");
+			else{
+				pDatabase.getProfile(tName.getText());
+				currentProfile = pDatabase.getProfile(tName.getText());
+				println("Lookup: " + currentProfile.toString());
+			}
 		}
 		else if (e.getSource() == tStatus || e.getSource() == bStatus){
 			if(currentProfile == null)

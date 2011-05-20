@@ -85,8 +85,10 @@ public class FacePamphlet extends ConsoleProgram
 		else if (e.getSource() == tStatus || e.getSource() == bStatus){
 			if(currentProfile == null)
 				println("Select a profile");
-			else
+			else{
 				currentProfile.setStatus(tStatus.getText());
+				println("Change Status: " + currentProfile.getStatus());
+			}
 		}
  		else if (e.getSource() == tPicture || e.getSource() == bPicture){
 			if(currentProfile == null)
@@ -96,6 +98,7 @@ public class FacePamphlet extends ConsoleProgram
 				try {
 					image = new GImage(tPicture.getText());
 				}catch (ErrorException ex){
+					println("Could not find picture: " + tPicture.getText());
 				}
 				currentProfile.setImage(image);
 			}
@@ -106,6 +109,7 @@ public class FacePamphlet extends ConsoleProgram
 			else {
 				currentProfile.addFriend(tFriend.getText());
 				pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
+				println("Added friend: " + tFriend.getText());
 			}
 		}
 	}

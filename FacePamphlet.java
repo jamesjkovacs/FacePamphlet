@@ -68,9 +68,14 @@ public class FacePamphlet extends ConsoleProgram
      */
     public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == bAdd){
-			pDatabase.addProfile(new FacePamphletProfile(tName.getText()));
-			currentProfile = pDatabase.getProfile(tName.getText());
-			println("Add: " + currentProfile.toString());
+			if (pDatabase.containsProfile(tName.getText())){
+				println(tName.getText() + " is already a valid profile");
+			}
+			else{
+				pDatabase.addProfile(new FacePamphletProfile(tName.getText()));
+				currentProfile = pDatabase.getProfile(tName.getText());
+				println("Add: " + currentProfile.toString());
+			}
 		}
 		else if (e.getSource() == bDelete){
 			if(currentProfile == null)

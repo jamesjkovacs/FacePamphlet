@@ -82,13 +82,14 @@ public class FacePamphlet extends ConsoleProgram
 			}
 		}
 		else if (e.getSource() == bLookup){
-			if(currentProfile == null)
-				println("Select a profile");
-			else{
+			if (pDatabase.containsProfile(tName.getText())){
 				pDatabase.getProfile(tName.getText());
 				currentProfile = pDatabase.getProfile(tName.getText());
 				println("Lookup: " + currentProfile.toString());
 			}
+			else
+				println(tName.getText() + " is not a valid profile");
+				
 		}
 		else if (e.getSource() == tStatus || e.getSource() == bStatus){
 			if(currentProfile == null)
@@ -124,7 +125,7 @@ public class FacePamphlet extends ConsoleProgram
 				}
 			}
 			else{
-				println(tFriend.getText() + "is not a valid profile");
+				println(tFriend.getText() + " is not a valid profile");
 			}
 				
 		}

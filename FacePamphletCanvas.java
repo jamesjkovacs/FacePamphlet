@@ -31,7 +31,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		// You fill this in
+		message = new GLabel(msg);
+		add(message, (getWidth() - message.getWidth()) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
 	}
 	
 	
@@ -47,6 +48,6 @@ public class FacePamphletCanvas extends GCanvas
 	public void displayProfile(FacePamphletProfile profile) {
 		// You fill this in
 	}
-
+	private GLabel message;
 	
 }

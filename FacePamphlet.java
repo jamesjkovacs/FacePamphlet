@@ -12,10 +12,10 @@ import acm.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-//public class FacePamphlet extends Program 
-//					implements FacePamphletConstants {
-public class FacePamphlet extends ConsoleProgram 
+public class FacePamphlet extends Program 
 					implements FacePamphletConstants {
+//public class FacePamphlet extends ConsoleProgram 
+//					implements FacePamphletConstants {
 
 	/**
 	 * This method has the responsibility for initializing the 
@@ -57,6 +57,10 @@ public class FacePamphlet extends ConsoleProgram
 		tFriend.addActionListener(this);
 		
 		pDatabase = new FacePamphletDatabase();
+		
+		canvas = new FacePamphletCanvas();
+		add(canvas);
+		
 		currentProfile = null;
     }
     
@@ -66,7 +70,78 @@ public class FacePamphlet extends ConsoleProgram
      * clicked or interactors are used, so you will have to add code
      * to respond to these actions.
      */
-    public void actionPerformed(ActionEvent e) {
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == bAdd){
+			if (pDatabase.containsProfile(tName.getText())){
+				canvas.showMessage(tName.getText() + " is already a valid profile");
+			}
+			else{
+				pDatabase.addProfile(new FacePamphletProfile(tName.getText()));
+				currentProfile = pDatabase.getProfile(tName.getText());
+				canvas.showMessage("Add: " + currentProfile.toString());
+			}
+		}
+		else if (e.getSource() == bDelete){
+			if (pDatabase.containsProfile(tName.getText())){
+				pDatabase.deleteProfile(tName.getText());
+				currentProfile = null;
+				canvas.showMessage("Delete: " + tName.getText());
+			}
+			else
+				canvas.showMessage(tName.getText() + " is not a valid profile");
+		}
+		else if (e.getSource() == bLookup){
+			if (pDatabase.containsProfile(tName.getText())){
+				pDatabase.getProfile(tName.getText());
+				currentProfile = pDatabase.getProfile(tName.getText());
+				canvas.showMessage("Lookup: " + currentProfile.toString());
+			}
+			else
+				canvas.showMessage(tName.getText() + " is not a valid profile");
+				
+		}
+		else if (e.getSource() == tStatus || e.getSource() == bStatus){
+			if(currentProfile == null)
+				canvas.showMessage("Select a profile");
+			else{
+				currentProfile.setStatus(tStatus.getText());
+				canvas.showMessage("Change Status: " + currentProfile.getStatus());
+			}
+		}
+			else if (e.getSource() == tPicture || e.getSource() == bPicture){
+			if(currentProfile == null)
+				canvas.showMessage("Select a profile");
+			else {
+				GImage image = null;
+				try {
+					image = new GImage(tPicture.getText());
+				}catch (ErrorException ex){
+					canvas.showMessage("Could not find picture: " + tPicture.getText());
+				}
+				currentProfile.setImage(image);
+			}
+			}
+		else if (e.getSource() == tFriend || e.getSource() == bFriend){
+			if(currentProfile == null)
+				canvas.showMessage("Select a profile");
+			else if (pDatabase.containsProfile(tFriend.getText())){
+				if(currentProfile.addFriend(tFriend.getText())){
+					pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
+					canvas.showMessage("Added friend: " + tFriend.getText());
+				}	
+				else{
+					canvas.showMessage(tFriend.getText() + " is already a friend");
+				}
+			}
+			else{
+				canvas.showMessage(tFriend.getText() + " is not a valid profile");
+			}
+				
+		}
+	}
+    	
+/*    	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == bAdd){
 			if (pDatabase.containsProfile(tName.getText())){
 				println(tName.getText() + " is already a valid profile");
@@ -135,10 +210,12 @@ public class FacePamphlet extends ConsoleProgram
 				
 		}
 	}
+*/
     private JTextField tName;
     private JButton bAdd, bDelete, bLookup;
     private JTextField tStatus, tPicture, tFriend;
     private JButton bStatus, bPicture, bFriend;
     private FacePamphletDatabase pDatabase;
     private FacePamphletProfile currentProfile;
+    private FacePamphletCanvas canvas;
 }

@@ -58,8 +58,9 @@ public class FacePamphletCanvas extends GCanvas
 			add(new GLabel("No Image"), LEFT_MARGIN + (IMAGE_WIDTH/2), IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + (IMAGE_HEIGHT/2));
 		}
 		else{
-			profile.getImage().scale(IMAGE_WIDTH, IMAGE_HEIGHT);
-			add(profile.getImage(), LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN)  ;
+			GImage display = profile.getImage();
+			display.scale(IMAGE_WIDTH, IMAGE_HEIGHT);
+			add(display, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN)  ;
 		}
 	}
 	

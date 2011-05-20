@@ -52,6 +52,15 @@ public class FacePamphletCanvas extends GCanvas
 		name.setFont(PROFILE_NAME_FONT);
 		name.setColor(Color.BLUE);
 		add(name, LEFT_MARGIN, name.getHeight() + TOP_MARGIN);
+		if(profile.getImage() == null){
+			GRect noPicture = new GRect(IMAGE_WIDTH, IMAGE_HEIGHT);
+			add(noPicture, LEFT_MARGIN, IMAGE_MARGIN);
+			add(new GLabel("No Image"), LEFT_MARGIN, IMAGE_MARGIN);
+		}
+		else{
+			profile.getImage().scale(IMAGE_WIDTH, IMAGE_HEIGHT);
+			add(profile.getImage(), LEFT_MARGIN, IMAGE_MARGIN)  ;
+		}
 	}
 	
 }

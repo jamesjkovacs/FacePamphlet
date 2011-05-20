@@ -122,7 +122,7 @@ public class FacePamphlet extends Program
 				}
 				currentProfile.setImage(image);
 			}
-			}
+		}
 		else if (e.getSource() == tFriend || e.getSource() == bFriend){
 			if(currentProfile == null)
 				canvas.showMessage("Select a profile");

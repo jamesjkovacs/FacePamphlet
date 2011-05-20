@@ -68,6 +68,11 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * a second time.)
 	 */
 	public boolean addFriend(String friend) {
+		for(int i=0; i<pFriends.size(); i++){
+			if(pFriends.get(i).equals(friend)){
+				return false;
+			}
+		}
 		pFriends.add(friend);
 		return true;
 	}

@@ -108,8 +108,10 @@ public class FacePamphlet extends ConsoleProgram
 				println("Select a profile");
 			else {
 				currentProfile.addFriend(tFriend.getText());
-				pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
-				println("Added friend: " + tFriend.getText());
+				if(pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName()))
+					println("Added friend: " + tFriend.getText());
+				else
+					println(tFriend.getText() + "is already a friend");
 			}
 		}
 	}

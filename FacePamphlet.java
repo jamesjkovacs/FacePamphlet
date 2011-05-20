@@ -78,13 +78,13 @@ public class FacePamphlet extends ConsoleProgram
 			}
 		}
 		else if (e.getSource() == bDelete){
-			if(currentProfile == null)
-				println("Select a profile");
-			else{
+			if (pDatabase.containsProfile(tName.getText())){
 				pDatabase.deleteProfile(tName.getText());
 				currentProfile = null;
 				println("Delete: " + tName.getText());
 			}
+			else
+				println(tName.getText() + " is not a valid profile");
 		}
 		else if (e.getSource() == bLookup){
 			if (pDatabase.containsProfile(tName.getText())){
@@ -126,7 +126,7 @@ public class FacePamphlet extends ConsoleProgram
 					println("Added friend: " + tFriend.getText());
 				}	
 				else{
-					println(tFriend.getText() + "is already a friend");
+					println(tFriend.getText() + " is already a friend");
 				}
 			}
 			else{

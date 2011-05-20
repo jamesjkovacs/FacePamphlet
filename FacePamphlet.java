@@ -106,13 +106,19 @@ public class FacePamphlet extends ConsoleProgram
 		else if (e.getSource() == tFriend || e.getSource() == bFriend){
 			if(currentProfile == null)
 				println("Select a profile");
-			else {
-				currentProfile.addFriend(tFriend.getText());
-				if(pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName()))
+			else if (pDatabase.containsProfile(tFriend.getText())){
+				if(currentProfile.addFriend(tFriend.getText())){
+					pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
 					println("Added friend: " + tFriend.getText());
-				else
+				}	
+				else{
 					println(tFriend.getText() + "is already a friend");
+				}
 			}
+			else{
+				println(tFriend.getText() + "is not a valid profile");
+			}
+				
 		}
 	}
     private JTextField tName;

@@ -1,0 +1,117 @@
+/* 
+ * File: FacePamphlet.java
+ * -----------------------
+ * When it is finished, this program will implement a basic social network
+ * management system.
+ */
+
+import acm.program.*;
+import acm.graphics.*;
+import acm.util.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+//public class FacePamphlet extends Program 
+//					implements FacePamphletConstants {
+public class FacePamphlet extends ConsoleProgram 
+					implements FacePamphletConstants {
+
+	/**
+	 * This method has the responsibility for initializing the 
+	 * interactors in the application, and taking care of any other 
+	 * initialization that needs to be performed.
+	 */
+	public void init() {
+
+		//North interactors
+		add(new JLabel("Name"), NORTH);
+		tName = new JTextField(TEXT_FIELD_SIZE);
+		add(tName, NORTH);
+		bAdd = new JButton("Add");
+		add(bAdd, NORTH);
+		bDelete = new JButton("Delete");
+		add(bDelete, NORTH);
+		bLookup = new JButton("Lookup");
+		add(bLookup, NORTH);
+		
+		//West interactors
+		tStatus = new JTextField(TEXT_FIELD_SIZE);
+		add(tStatus, WEST);
+		bStatus = new JButton("Change Status");
+		add(bStatus, WEST);
+		add(new JLabel(EMPTY_LABEL_TEXT), WEST); //create a space
+		tPicture = new JTextField(TEXT_FIELD_SIZE);
+		add(tPicture, WEST);
+		bPicture = new JButton("Change Picture");
+		add(bPicture, WEST);
+		add(new JLabel(EMPTY_LABEL_TEXT), WEST); //create a space
+		tFriend = new JTextField(TEXT_FIELD_SIZE);
+		add(tFriend, WEST);
+		bFriend = new JButton("Add Friend");
+		add(bFriend, WEST);
+		
+		addActionListeners();
+		tStatus.addActionListener(this);
+		tPicture.addActionListener(this);
+		tFriend.addActionListener(this);
+		
+		pDatabase = new FacePamphletDatabase();
+		currentProfile = null;
+    }
+    
+  
+    /**
+     * This class is responsible for detecting when the buttons are
+     * clicked or interactors are used, so you will have to add code
+     * to respond to these actions.
+     */
+    public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == bAdd){
+			pDatabase.addProfile(new FacePamphletProfile(tName.getText()));
+			currentProfile = pDatabase.getProfile(tName.getText());
+			println("Add: " + currentProfile.toString());
+		}
+		else if (e.getSource() == bDelete){
+			pDatabase.deleteProfile(tName.getText());
+			currentProfile = null;
+			println("Delete: " + tName.getText());
+		}
+		else if (e.getSource() == bLookup){
+			pDatabase.getProfile(tName.getText());
+			currentProfile = pDatabase.getProfile(tName.getText());
+			println("Lookup: " + currentProfile.toString());
+		}
+		else if (e.getSource() == tStatus || e.getSource() == bStatus){
+			if(currentProfile == null)
+				println("Select a profile");
+			else
+				currentProfile.setStatus(tStatus.getText());
+		}
+ 		else if (e.getSource() == tPicture || e.getSource() == bPicture){
+			if(currentProfile == null)
+				println("Select a profile");
+			else {
+				GImage image = null;
+				try {
+					image = new GImage(tPicture.getText());
+				}catch (ErrorException ex){
+				}
+				currentProfile.setImage(image);
+			}
+ 		}
+		else if (e.getSource() == tFriend || e.getSource() == bFriend){
+			if(currentProfile == null)
+				println("Select a profile");
+			else {
+				currentProfile.addFriend(tFriend.getText());
+				pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
+			}
+		}
+	}
+    private JTextField tName;
+    private JButton bAdd, bDelete, bLookup;
+    private JTextField tStatus, tPicture, tFriend;
+    private JButton bStatus, bPicture, bFriend;
+    private FacePamphletDatabase pDatabase;
+    private FacePamphletProfile currentProfile;
+}

@@ -95,6 +95,7 @@ public class FacePamphlet extends Program
 			if (pDatabase.containsProfile(tName.getText())){
 				pDatabase.getProfile(tName.getText());
 				currentProfile = pDatabase.getProfile(tName.getText());
+				canvas.displayProfile(currentProfile);
 				canvas.showMessage("Lookup: " + currentProfile.toString());
 			}
 			else

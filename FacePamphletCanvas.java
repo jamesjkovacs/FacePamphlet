@@ -31,7 +31,7 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		message = new GLabel(msg);
+		GLabel message = new GLabel(msg);
 		message.setFont(MESSAGE_FONT);
 		add(message, (getWidth() - message.getWidth()) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
 	}
@@ -47,8 +47,11 @@ public class FacePamphletCanvas extends GCanvas
 	 * the user, and a list of the user's friends in the social network.
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
-		// You fill this in
+		removeAll();
+		GLabel name = new GLabel(profile.getName());
+		name.setFont(PROFILE_NAME_FONT);
+		name.setColor(Color.BLUE);
+		add(name, LEFT_MARGIN, name.getHeight() + TOP_MARGIN);
 	}
-	private GLabel message;
 	
 }

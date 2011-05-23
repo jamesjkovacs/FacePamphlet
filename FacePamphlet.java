@@ -98,7 +98,7 @@ public class FacePamphlet extends Program
 				pDatabase.getProfile(tName.getText());
 				currentProfile = pDatabase.getProfile(tName.getText());
 				canvas.displayProfile(currentProfile);
-				canvas.showMessage("Lookup: " + currentProfile.toString());
+				canvas.showMessage("Displaying " + currentProfile.toString());
 			}
 			else
 				canvas.showMessage("A profile with the name " + tName.getText() + " does not exist.");
@@ -133,8 +133,8 @@ public class FacePamphlet extends Program
 			else if (pDatabase.containsProfile(tFriend.getText())){
 				if(currentProfile.addFriend(tFriend.getText())){
 					pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
-					canvas.showMessage("Added friend: " + tFriend.getText());
 					canvas.displayProfile(currentProfile);
+					canvas.showMessage(tFriend.getText() + " added as friend");
 				}	
 				else{
 					canvas.showMessage(tFriend.getText() + " is already a friend");

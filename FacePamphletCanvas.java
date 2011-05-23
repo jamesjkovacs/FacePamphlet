@@ -66,7 +66,7 @@ public class FacePamphletCanvas extends GCanvas
 		status.setFont(PROFILE_STATUS_FONT);
 		add(status, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN + status.getHeight());
 	
-		DisplayFriends(FacePamphletProfile profile);
+		DisplayFriends(profile);
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){

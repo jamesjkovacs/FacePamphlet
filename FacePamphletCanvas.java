@@ -53,7 +53,9 @@ public class FacePamphletCanvas extends GCanvas
 		name.setFont(PROFILE_NAME_FONT);
 		name.setColor(Color.BLUE);
 		add(name, LEFT_MARGIN, name.getHeight() + TOP_MARGIN);
+		
 		DisplayImage(profile, name);
+		
 		String stringStatus ;
 		if(profile.getStatus() == "")
 			stringStatus = "No Current Status";
@@ -63,8 +65,8 @@ public class FacePamphletCanvas extends GCanvas
 		GLabel status = new GLabel(stringStatus);
 		status.setFont(PROFILE_STATUS_FONT);
 		add(status, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN + status.getHeight());
-		
-		
+	
+		DisplayFriends(FacePamphletProfile profile);
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){
@@ -79,6 +81,11 @@ public class FacePamphletCanvas extends GCanvas
 			display.setSize(IMAGE_WIDTH, IMAGE_HEIGHT);
 			add(display, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN)  ;
 		}
+	}
+	private void DisplayFriends(FacePamphletProfile profile){
+		GLabel header = new GLabel("Friends:");
+		header.setFont(PROFILE_FRIEND_LABEL_FONT);
+		add(header, (getWidth() - header.getWidth()) / 2, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN);
 	}
 	private GLabel name; 
 	GLabel message;

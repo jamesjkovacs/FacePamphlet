@@ -49,6 +49,8 @@ public class FacePamphletCanvas extends GCanvas
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
 		removeAll();
+		if (profile == null)
+			return;
 		name = new GLabel(profile.getName());
 		name.setFont(PROFILE_NAME_FONT);
 		name.setColor(Color.BLUE);

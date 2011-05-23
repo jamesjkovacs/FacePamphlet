@@ -3,7 +3,7 @@
  * -----------------------
  * When it is finished, this program will implement a basic social network
  * management system.
- * Just removed this
+ * Still trying to figure this out
  */
 
 import acm.program.*;

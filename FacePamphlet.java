@@ -122,6 +122,7 @@ public class FacePamphlet extends Program
 					image = new GImage(tPicture.getText());
 				}catch (ErrorException ex){
 					canvas.showMessage("Could not find picture: " + tPicture.getText());
+					return;
 				}
 				currentProfile.setImage(image);
 				canvas.displayProfile(currentProfile);

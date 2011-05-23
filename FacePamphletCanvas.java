@@ -92,6 +92,7 @@ public class FacePamphletCanvas extends GCanvas
 		while(friendList.hasNext()){
 			GLabel friend = new GLabel(friendList.next());
 			friendLocY += friend.getHeight();
+			friend.setFont(PROFILE_FRIEND_FONT);
 			add(friend, (getWidth() - header.getWidth()) / 2, friendLocY);
 		}
 	}

@@ -79,14 +79,16 @@ public class FacePamphlet extends Program
 			else{
 				pDatabase.addProfile(new FacePamphletProfile(tName.getText()));
 				currentProfile = pDatabase.getProfile(tName.getText());
-				canvas.showMessage("Add: " + currentProfile.toString());
+				canvas.displayProfile(currentProfile);
+				canvas.showMessage("New profile created.");
 			}
 		}
 		else if (e.getSource() == bDelete){
 			if (pDatabase.containsProfile(tName.getText())){
 				pDatabase.deleteProfile(tName.getText());
 				currentProfile = null;
-				canvas.showMessage("Delete: " + tName.getText());
+				canvas.displayProfile(currentProfile);
+				canvas.showMessage("Profile of " + tName.getText() + " deleted.");
 			}
 			else
 				canvas.showMessage(tName.getText() + " is not a valid profile");

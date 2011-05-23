@@ -107,10 +107,11 @@ public class FacePamphlet extends Program
 				canvas.showMessage("Select a profile");
 			else{
 				currentProfile.setStatus(tStatus.getText());
+				canvas.displayProfile(currentProfile);
 				canvas.showMessage("Change Status: " + currentProfile.getStatus());
 			}
 		}
-			else if (e.getSource() == tPicture || e.getSource() == bPicture){
+		else if (e.getSource() == tPicture || e.getSource() == bPicture){
 			if(currentProfile == null)
 				canvas.showMessage("Select a profile");
 			else {

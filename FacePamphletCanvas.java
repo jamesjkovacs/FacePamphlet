@@ -74,7 +74,7 @@ public class FacePamphletCanvas extends GCanvas
 			GRect noPicture = new GRect(IMAGE_WIDTH, IMAGE_HEIGHT);
 			add(noPicture, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN);
 			GLabel noImage = new GLabel ("No Image");
-			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH + (noImage.getWidth())/2), IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + (IMAGE_HEIGHT/2));
+			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH - noImage.getWidth())/2, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + (IMAGE_HEIGHT/2));
 		}
 		else{
 			GImage display = profile.getImage();

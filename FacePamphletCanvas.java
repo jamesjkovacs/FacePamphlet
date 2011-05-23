@@ -22,7 +22,6 @@ public class FacePamphletCanvas extends GCanvas
 	public FacePamphletCanvas() {
 		message = new GLabel("");
 		message.setFont(MESSAGE_FONT);
-		add(message, (getWidth() - message.getWidth()) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
 	}
 
 	
@@ -62,6 +61,9 @@ public class FacePamphletCanvas extends GCanvas
 		GLabel status = new GLabel(stringStatus);
 		status.setFont(PROFILE_STATUS_FONT);
 		add(status, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN + status.getHeight());
+		
+		
+		add(message, (getWidth() - message.getWidth()) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){

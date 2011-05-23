@@ -48,7 +48,7 @@ public class FacePamphletCanvas extends GCanvas
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
 		removeAll();
-		GLabel name = new GLabel(profile.getName());
+		name = new GLabel(profile.getName());
 		name.setFont(PROFILE_NAME_FONT);
 		name.setColor(Color.BLUE);
 		add(name, LEFT_MARGIN, name.getHeight() + TOP_MARGIN);
@@ -61,7 +61,7 @@ public class FacePamphletCanvas extends GCanvas
 			
 		GLabel status = new GLabel(stringStatus);
 		status.setFont(PROFILE_STATUS_FONT);
-		add(status, LEFT_MARGIN, TOP_MARGIN + IMAGE_HEIGHT + status.getHeight());
+		add(status, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + STATUS_MARGIN + status.getHeight());
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){
@@ -77,6 +77,6 @@ public class FacePamphletCanvas extends GCanvas
 			add(display, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN)  ;
 		}
 	}
-	 
+	private GLabel name; 
 	
 }

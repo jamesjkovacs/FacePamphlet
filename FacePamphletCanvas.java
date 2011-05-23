@@ -61,7 +61,7 @@ public class FacePamphletCanvas extends GCanvas
 			
 		GLabel status = new GLabel(stringStatus);
 		status.setFont(PROFILE_STATUS_FONT);
-		add(status, LEFT_MARGIN, TOP_MARGIN + status.getHeight());
+		add(status, LEFT_MARGIN, TOP_MARGIN + IMAGE_HEIGHT + status.getHeight());
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){

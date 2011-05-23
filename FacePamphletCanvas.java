@@ -52,6 +52,19 @@ public class FacePamphletCanvas extends GCanvas
 		name.setFont(PROFILE_NAME_FONT);
 		name.setColor(Color.BLUE);
 		add(name, LEFT_MARGIN, name.getHeight() + TOP_MARGIN);
+		DisplayImage(profile, name);
+		String stringStatus ;
+		if(profile.getStatus() == "")
+			stringStatus = "No Current Status";
+		else
+			stringStatus = profile.getName() + " is " + profile.getStatus();
+			
+		GLabel status = new GLabel(stringStatus);
+		status.setFont(PROFILE_STATUS_FONT);
+		add(status, LEFT_MARGIN, TOP_MARGIN + status.getHeight());
+	}
+	
+	private void DisplayImage(FacePamphletProfile profile, GLabel name){
 		if(profile.getImage() == null){
 			GRect noPicture = new GRect(IMAGE_WIDTH, IMAGE_HEIGHT);
 			add(noPicture, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN);
@@ -64,5 +77,6 @@ public class FacePamphletCanvas extends GCanvas
 			add(display, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN)  ;
 		}
 	}
+	 
 	
 }

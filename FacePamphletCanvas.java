@@ -65,7 +65,6 @@ public class FacePamphletCanvas extends GCanvas
 		add(status, LEFT_MARGIN, IMAGE_MARGIN + name.getHeight() + TOP_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN + status.getHeight());
 		
 		
-		add(message, (getWidth() - message.getWidth()) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
 	}
 	
 	private void DisplayImage(FacePamphletProfile profile, GLabel name){

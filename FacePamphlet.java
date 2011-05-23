@@ -3,7 +3,7 @@
  * -----------------------
  * When it is finished, this program will implement a basic social network
  * management system.
- * This is a test to see if git works in exlipse.
+ * Just removed this
  */
 
 import acm.program.*;

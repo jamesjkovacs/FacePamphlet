@@ -101,7 +101,7 @@ public class FacePamphlet extends Program
 				canvas.showMessage("Lookup: " + currentProfile.toString());
 			}
 			else
-				canvas.showMessage(tName.getText() + " is not a valid profile");
+				canvas.showMessage("A profile with the name " + tName.getText() + " does not exist.");
 				
 		}
 		else if (e.getSource() == tStatus || e.getSource() == bStatus){
@@ -124,6 +124,7 @@ public class FacePamphlet extends Program
 					canvas.showMessage("Could not find picture: " + tPicture.getText());
 				}
 				currentProfile.setImage(image);
+				canvas.displayProfile(currentProfile);
 			}
 		}
 		else if (e.getSource() == tFriend || e.getSource() == bFriend){
@@ -133,6 +134,7 @@ public class FacePamphlet extends Program
 				if(currentProfile.addFriend(tFriend.getText())){
 					pDatabase.getProfile(tFriend.getText()).addFriend(currentProfile.getName());
 					canvas.showMessage("Added friend: " + tFriend.getText());
+					canvas.displayProfile(currentProfile);
 				}	
 				else{
 					canvas.showMessage(tFriend.getText() + " is already a friend");

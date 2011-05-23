@@ -126,6 +126,7 @@ public class FacePamphlet extends Program
 				}
 				currentProfile.setImage(image);
 				canvas.displayProfile(currentProfile);
+				canvas.showMessage("Picture updated.");
 			}
 		}
 		else if (e.getSource() == tFriend || e.getSource() == bFriend){
